@@ -1,0 +1,33 @@
+<div class="logo"><h2>FireVue</h2></div>
+	<div class="login-left">
+		<div class="login">
+			<form role="form">
+				<h1>Sign In</h1>
+				<div class="form-group">
+					<label for="exampleInputEmail1">Email address</label>
+					<input type="email" class="form-control" id="exampleInputEmail1" ng-model="email">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputPassword1">Password</label>
+					<input type="password" class="form-control" id="exampleInputPassword1" ng-model="password">
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<div class="checkbox">
+							<label>
+								<input type="checkbox"> Keep me signed in
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<div ng-show="loginError" class="alert alert-danger" role="alert">Incorrect email address or password</div>
+						<button ng-click="login()" type="submit" class="btn btn-default">Sign in</button>
+						<a href="https://app.hirevue.com/accounts/password-recovery/"><h5>Forgot Password?</h5></a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

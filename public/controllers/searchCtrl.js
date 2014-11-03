@@ -13,10 +13,11 @@ app.controller('searchCtrl', function($scope, $location, hirevueService){
 
 	$scope.getMyData = function(){
 		hirevueService.getMyData()
-			.then(function(){
-			console.log();
+			.then(function(reponse){
+			console.log(reponse);
 		})
 	}
+	$scope.getMyData();
 
 
 });

@@ -10,28 +10,20 @@ var app = angular.module('fireVue').factory('hirevueService', function($http, $q
 					email: user
 				}
 			});		
-		// },
-		// getMyData: function(){
-		// 	var deferred = $q.defer();
+		},
+		getMyData: function(candidate, email ){
+			return $http({
+				method: 'GET',
+				url: '/firevue',
+				data: {
+					"fullName": candidate,
+					"email": email
 
-		// 	$http({
-		// 		method: 'GET',
-		// 		url: 'https://app.devhv.com/api/v1/interviews/',
-		// 		body: {
-		//     "applicationToken": "test_public_token",
-		//     "version": "1.2.0",
-		//     "impersonate": req.body.email,
-		//     "apiKey": ":"
-		// },
-		// json: true
-		// 	}).success(function(response){
-		// 		console.log(response);
-		// 		deferred.resolve(response);
-		// 	})
-		// 	  .error(function(err){
-		// 	  	deferred.reject(err);
-		// 	  })
-		// 	  return deferred.promise;
+				}
+			}).then(function(res){
+				console.log(res);
+				return res.data
+			})
 		},
 		logout: function(){
 			return $http({

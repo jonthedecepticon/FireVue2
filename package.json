@@ -24,6 +24,7 @@
     "mongoose": "^3.8.18",
     "passport": "^0.2.1",
     "passport-local": "^1.0.0",
-    "request": "^2.47.0"
+    "request": "^2.47.0",
+    "tough-cookie": "^0.12.1"
   }
 }

@@ -10,6 +10,8 @@ var express = require('express'),
 	Schema = mongoose.Schema,
 	session = require('express-session'),
 	request = require('request');
+
+request = request.defaults({jar: true});
 	
 
 passport.use(new LocalStrategy({
@@ -53,6 +55,7 @@ app.use(session({secret: 'somethingreallyawesome$$$'}));
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 var authenticateUser = function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (!user) {
@@ -75,14 +78,13 @@ app.post('/api/auth', authenticateUser);
 //LOGIN
 app.post('/hirevueLogin', function(req, res) {
 	
-	var request = require('request');
 	request.post({
 		url: 'https://app.devhv.com/api/v1/login/',
 		body: {
 		    "applicationToken": "test_public_token",
 		    "version": "1.2.0",
-		    "impersonate": req.body.email,
-		    "apiKey": ""
+		    "impersonate": 'jlambson@hirevue.com',
+		    "apiKey": ":"
 		},
 		json: true
 	}, 
@@ -100,11 +102,11 @@ app.use(function(req, res, next) {
 	next();
 });
 
-app.get('/interviews', function(req, res) {
+app.get('/firevue', function(req, res) {
 	
-	var request = require('request');
 	request.get({
 		url: 'https://app.devhv.com/api/v1/interviews/',
+		"contentType": "application/json",
 		json: true
 	}, 
 	function (error, response, body) {
@@ -119,7 +121,6 @@ app.get('/interviews', function(req, res) {
 //LOGOUT
 app.post('/hirevueLogout', function(req, res) {
 	
-	var request = require('request');
 	request.post({
 		url: 'https://app.devhv.com/api/v1/logout/',
 		json: true

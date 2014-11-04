@@ -83,7 +83,7 @@ app.post('/hirevueLogin', function(req, res) {
 		body: {
 		    "applicationToken": "test_public_token",
 		    "version": "1.2.0",
-		    "impersonate": 'jlambson@hirevue.com',
+		    "impersonate": req.body.email,
 		    "apiKey": ":"
 		},
 		json: true
@@ -141,6 +141,9 @@ var requireAuth = function(req, res, next) {
   }
   next();
 };
+app.get('/api/user/me', requireAuth, function(req, res) {
+  return res.json(req.user);
+});
 
 // mongoose.connect(databaseRefrence);
 connection.once('open', function(){

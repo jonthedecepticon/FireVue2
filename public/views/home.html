@@ -22,10 +22,10 @@
 							<h4 class="modal-title" id="myModalLabel">CSV*</h4>
 						</div>
 						<div class="modal-body">
-							CSV must contain the headers First, Last, Email, and Phone. File size limit is 1MB <br />
-							<strong>Example Given...</strong><br> <!-- TODO// ng-show example -->
+							CSV must contain the headers <strong>First, Last, Email,</strong> and <strong>Phone</strong>. File size limit is 1MB <br />
+							<a ng-click="showExample=!showExample"><strong>View Example...</strong><br></a> <!-- TODO// ng-show example -->
 							<br>
-							<table class="table table-bordered">
+							<table class="table table-bordered" ng-hide="showExample">
 								<thread>
 									<tr>
 										<td>First</td>
@@ -93,14 +93,14 @@
 			</tr>
 		</thread>
 		<tbody>
-			<tr > 
-				<!-- TODO// need to add ng-repeat -->
-				<td>{{data.email}}</td>
-				<td>{{character.description}}</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+			<tr ng-repeat="person in data"> 
+				<td>{{$index + 1}}</td>
+				<td>{{person.fullName}}</td>
+				<td>{{person.email}}</td>
+				<td>{{person.status}}</td>
+				<td>{{person.position.title}}</td>
+				<td>{{person.account.name}}</td>
+				
 			</tr>
 		</tbody>
 	</table>

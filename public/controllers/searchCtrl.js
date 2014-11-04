@@ -2,7 +2,7 @@
 var app = angular.module('fireVue');
 
 app.controller('searchCtrl', function($scope, $location, hirevueService){
-	$scope.test = "Please enter a search";
+	$scope.test = "Please upload a CSV* to preform a search";
 
 	$scope.logout = function(){
 		hirevueService.logout().then(function(){
@@ -11,10 +11,15 @@ app.controller('searchCtrl', function($scope, $location, hirevueService){
 		})
 	}
 
+	$scope.showExample = function(){
+		$scope.showExample = false;
+	};
+
 	$scope.getMyData = function(){
 		hirevueService.getMyData()
-			.then(function(reponse){
-			console.log(reponse);
+			.then(function(response){
+			console.log(response);
+			$scope.data = response;
 		})
 	}
 	$scope.getMyData();

@@ -9,10 +9,12 @@ var express = require('express'),
 	LocalStrategy = require('passport-local'),
 	Schema = mongoose.Schema,
 	session = require('express-session'),
+	csv = require('csv'),
 	request = require('request');
 
 request = request.defaults({jar: true});
 	
+
 
 passport.use(new LocalStrategy({
   usernameField: 'email',
@@ -84,7 +86,7 @@ app.post('/hirevueLogin', function(req, res) {
 		    "applicationToken": "test_public_token",
 		    "version": "1.2.0",
 		    "impersonate": req.body.email,
-		    "apiKey": ":"
+		    "apiKey": "g9ENx8qgBCWgW2qzJCvrAc:ee5de77ef6ecd246e764467425d649730a73781d6ac5ac59ae71b111523d746a"
 		},
 		json: true
 	}, 

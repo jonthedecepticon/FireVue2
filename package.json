@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/jonthedecepticon/FireVue2",
   "dependencies": {
+    "babyparse": "^0.2.1",
     "body-parser": "^1.9.2",
     "cors": "^2.5.0",
+    "csv": "^0.4.1",
     "express": "^4.10.1",
     "express-session": "^1.9.1",
     "mongoose": "^3.8.18",

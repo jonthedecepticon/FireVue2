@@ -57,13 +57,14 @@
 							</table>
 
 							<div class="upload-button btn">
-								<input type="file" name="file">
+								<input id="files" type="file" name="file">
 							</div>
 							<!-- TODO// ng-show preview of uploaded document using ng-repeat -->
+
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-							<button ng-click="getMyData()" type="button" class="btn btn-primary">Save</button>
+							<button id="submit" type="button" class="btn btn-primary">Save</button>
 						</div>
 					</div>
 				</div>
@@ -71,9 +72,6 @@
 		</form>
 		<form class="navbar-form navbar-right" role="search">
 			<div class="form-group">
-				<!-- <input type="text" class="form-control" placeholder="Single Candidate">
-			</div> -->
-			<!-- <button ng-click="getMyData()" type="submit" class="btn btn-default">Search</button> -->
 			<a ng-click="logout()" class="navbar-form navbar-right"  >Log Out</a>
 		</form>
 	</div><!-- /.navbar-collapse -->

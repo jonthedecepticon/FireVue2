@@ -11,19 +11,23 @@ var app = angular.module('fireVue').factory('hirevueService', function($http, $q
 				}
 			});		
 		},
-		getMyData: function(candidate, email ){
+		getMyData: function(){
 			return $http({
 				method: 'GET',
-				url: '/firevue',
-				data: {
-					"fullName": candidate,
-					"email": email
-
-				}
+				url: '/firevue'
 			}).then(function(res){
 				console.log(res);
 				return res.data
 			})
+		// },
+		// uploadCsv: function(){
+		// 	return $http({
+		// 		method: 'GET',
+		// 		url: '/firevue'
+		// 	}).then(function(res){
+		// 		console.log(res);
+		// 		return res.data
+		// 	})
 		},
 		logout: function(){
 			return $http({

@@ -3,7 +3,7 @@
 var express = require('express'),
 	bodyParser = require('body-parser'),
 	cors = require('cors'),
-	port = 8080,
+	port = 80,
 	mongoose = require('mongoose'),
 	passport = require('passport'),
 	LocalStrategy = require('passport-local'),

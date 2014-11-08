@@ -3,7 +3,7 @@
 var express = require('express'),
 	bodyParser = require('body-parser'),
 	cors = require('cors'),
-	port = 80,
+	port = 3000,
 	mongoose = require('mongoose'),
 	passport = require('passport'),
 	LocalStrategy = require('passport-local'),
@@ -86,9 +86,9 @@ app.post('/hirevueLogin', function(req, res) {
 		    "applicationToken": "test_public_token",
 		    "version": "1.2.0",
 		    "impersonate": req.body.email,
-		    "apiKey": "g9ENx8qgBCWgW2qzJCvrAc:ee5de77ef6ecd246e764467425d649730a73781d6ac5ac59ae71b111523d746a"
+		    "apiKey": process.env.HIREVUE_API 
 		},
-		json: true
+			json: true
 	}, 
 	function (error, response, body) {
 	 	if (!error && response.statusCode == 200) {

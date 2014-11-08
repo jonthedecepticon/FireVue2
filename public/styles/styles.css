@@ -7,7 +7,8 @@ html, body {
 	height: 100px;
 	margin-top: 5%;
 	margin-left: 15%;
-	background: url("http://kdrestoration.com/wp-admin/images/FIre.jpg") no-repeat center;
+	background: url("http://media.nbcphiladelphia.com/images/1200*675/Generic+Smoke+Cloud+Generic.jpg") no-repeat center;
+	background-position: 0px -305px;
 	display: inline-block;
 	text-align: center;
 }
@@ -19,9 +20,9 @@ h2	{
 }
 
 .login-left	{
-	background: url("http://i.ytimg.com/vi/lOqe-QMZzcQ/maxresdefault.jpg") no-repeat;
-	background-position: 10% 5%;
+	background: url("http://kdrestoration.com/wp-admin/images/FIre.jpg") no-repeat;
 	background-size: 100%;
+	background-position: 0px -90px;
 	border-radius: 5px;
 	border: 1px solid #E85B07;
 	width: 70%;
@@ -50,7 +51,7 @@ h1 {
 }
 
 h5	{
-	color: red;
+	color: #fff;
 	font-family: serif;
 	margin-top: -24px;
 	margin-left: -10%;
@@ -87,5 +88,9 @@ h5	{
 
 .navbar-inverse .navbar-brand	{
 	color: red;
+}
+
+label	{
+	color: #fff;
 }
 

@@ -17,19 +17,18 @@ app.controller('searchCtrl', function($scope, $location, hirevueService){
 
 	$scope.getMyData = function(){
 		hirevueService.getMyData()
-			.then(function(response){
-			console.log(response);
+		.then(function(response){
 			$scope.data = response;
+			alert('Data has been loaded');
 		})
 	}
 
-	// $scope.uploadCsv = function(){
-	// 	hirevueService.uploadCsv()
-	// 		.then(function(res){
-	// 			console.log(res);
-	// 			$scope.data = res;
-	// 		})
-	// }
+	$scope.csvResults = function(){
+		hirevueService.csvResults()
+		.then(function(res){
+			$scope.data = res;
+		})
+	}
 
 	$scope.getMyData();
 
@@ -37,18 +36,13 @@ app.controller('searchCtrl', function($scope, $location, hirevueService){
 	// Parse local CSV files
 
 	var inputType = "string";
-var stepped = 0, rowCount = 0, errorCount = 0, firstError;
-var start, end;
-var firstRun = true;
-var maxUnparseLength = 10000;
+	var stepped = 0, rowCount = 0, errorCount = 0, firstError;
+	var start, end;
+	var firstRun = true;
+	var maxUnparseLength = 10000;
 
 	var start, end;
 	var firstRun = true;
-
-		// stepped = 0;
-		// // rowCount = 0;
-		// // errorCount = 0;
-		// // firstError = undefined;
 
 	$('#submit').click(function()
 	{
@@ -104,12 +98,12 @@ var maxUnparseLength = 10000;
 		}
 	});
 
-	$('#insert-tab').click(function()
-	{
-		$('#delimiter').val('\t');
-	});
+$('#insert-tab').click(function()
+{
+	$('#delimiter').val('\t');
+});
 
-	function printStats(msg)
+function printStats(msg)
 {
 	if (msg)
 		console.log(msg);
@@ -157,8 +151,8 @@ function completeFn(results)
 
 	printStats("Parse complete");
 	console.log("    Results:", results);
-
-	// icky hack
+	$scope.results = results.data;
+	$scope.compare()
 	
 }
 
@@ -166,25 +160,46 @@ function errorFn(err, file)
 {
 	end = now();
 	console.log("ERROR:", err, file);
-	
+
 }
 
 function now()
 {
 	return typeof window.performance !== 'undefined'
-			? window.performance.now()
-			: 0;
+	? window.performance.now()
+	: 0;
+}
+
+
+$scope.gotIt = false;
+
+$scope.compare = function(){
+	var fullnameResult = [];
+
+	var resultsToModify = $scope.results
+	for(var i=1; i < $scope.results.length; i++){
+		var fullname = $scope.results[i][0] + ' ' + $scope.results[i][1];
+		fullnameResult.push(fullname);
+	}
+
+	var datanames = [];
+	for(var i = 0; i < $scope.data.length; i++){
+		datanames.push($scope.data[i].fullName)
+	}
+
+
+	$scope.filteredResults = [];
+	for(var i = 0; i < fullnameResult.length; i++){
+		if(datanames.indexOf(fullnameResult[i]) > -1){
+			$scope.filteredResults.push($scope.results[i])
+		}
+	}
+	$scope.gotIt = true;
+
+
 }
 
 });
 
-
-	// In a worker thread
-	// Papa.parse(file, {
-	// 	worker: true,
-	// 	complete: function(results) {
-	// 		console.log("Parse results:", results.data);
-	// 	}
-	// });
 
 

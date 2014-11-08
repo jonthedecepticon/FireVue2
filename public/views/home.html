@@ -22,7 +22,8 @@
 							<h4 class="modal-title" id="myModalLabel">CSV*</h4>
 						</div>
 						<div class="modal-body">
-							CSV must contain the headers <strong>First, Last, Email,</strong> and <strong>Phone</strong>. File size limit is 1MB <br />
+							CSV must contain the headers <strong>First, Last, Email, Phone</strong> and <strong>Position</strong>. File size limit is 1MB. <br />
+							<br>
 							<a ng-click="showExample=!showExample"><strong>View Example...</strong><br></a> <!-- TODO// ng-show example -->
 							<br>
 							<table class="table table-bordered" ng-hide="showExample">
@@ -32,6 +33,7 @@
 										<td>Last</td>
 										<td>Email</td>
 										<td>Phone</td>
+										<td>Position</td>
 									</tr>
 								</thread>
 								<tbody>
@@ -40,22 +42,30 @@
 										<td>Doe</td>
 										<td>john@example.com</td>
 										<td>555-555-5555</td>
+										<td> Customer Service Manager</td>
 									</tr>
 									<tr>
 										<td>Jane</td>
 										<td>Smith</td>
 										<td>jane@example.com</td>
-										<td>123-456-7890</td>
+										<td></td>
+										<td>Marketing Director</td>
 									</tr>
 									<tr>
 										<td>James</td>
 										<td>Johnson</td>
 										<td>james@example.com</td>
+										<td>123-456-7890</td>
 										<td></td>
 									</tr>
 								</tbody>
 							</table>
-
+							<strong>***Directions: </strong>
+							<ol>
+								<li>Choose CSV file to upload, select 'Upload'.</li>
+								<li>Select 'Compare' to display the results.</li>
+								<li>Select 'Close' to see results.</li>
+							</ol>
 							<div class="upload-button btn">
 								<input id="files" type="file" name="file">
 							</div>
@@ -63,8 +73,9 @@
 
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-							<button id="submit" type="button" class="btn btn-primary">Save</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button id="submit" ng-click="saveData()" type="button" class="btn btn-success">Upload</button>
+							<button id="submit" ng-click="csvResults()" type="button" class="btn btn-danger" data-submit="modal">Compare</button>
 						</div>
 					</div>
 				</div>
@@ -85,19 +96,18 @@
 				<td>#</td>
 				<td>Name</td>
 				<td>Email</td>
-				<td>Status</td>
+				<td>Phone</td>
 				<td>Position</td>
-				<td>Company</td>
 			</tr>
 		</thread>
-		<tbody>
-			<tr ng-repeat="person in data"> 
+		<tbody ng-show="gotIt">
+			<tr ng-repeat="person in filteredResults"> 
 				<td>{{$index + 1}}</td>
-				<td>{{person.fullName}}</td>
-				<td>{{person.email}}</td>
-				<td>{{person.status}}</td>
-				<td>{{person.position.title}}</td>
-				<td>{{person.account.name}}</td>
+				<td>{{person[0]}} {{person[1]}}</td>
+				<td>{{person[2]}}</td>
+				<td>{{person[3]}}</td>
+				<td>{{person[4]}}</td>
+				<!-- <td>{{person.account.name}}</td> -->
 				
 			</tr>
 		</tbody>
@@ -105,3 +115,4 @@
 
 
 </div>
+

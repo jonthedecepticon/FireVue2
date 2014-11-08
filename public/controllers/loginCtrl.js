@@ -5,8 +5,8 @@ app.controller('loginCtrl', function($scope, $location, hirevueService) {
   $scope.login = function() {
 
     hirevueService.login($scope.email)
-      .success(function() {  //.then(function(data) {
-        console.log('Logged in successfully'); //console.log('Logged in', data);
+      .success(function() {  
+        console.log('Logged in successfully');
         $scope.loginError = false;
         $location.path('/firevue');
       }).error(function(){

@@ -55,7 +55,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(cors());
 app.use(session({
 	secret: 'somethingreallyawesome$$$',
-	saveUnitialized: true,
+	saveUninitialized: true,
 	resave: true,
 	name: 'firevue'
 }));

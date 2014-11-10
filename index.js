@@ -53,7 +53,12 @@ var app = express();
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 app.use(cors());
-app.use(session({secret: 'somethingreallyawesome$$$'}));
+app.use(session({
+	secret: 'somethingreallyawesome$$$',
+	saveUnitialized: true,
+	resave: true,
+	name: 'firevue'
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -83,7 +88,7 @@ app.post('/hirevueLogin', function(req, res) {
 		    "version": "1.2.0",
 		    "impersonate": req.body.email,
 		    "apiKey": process.env.HIREVUE_API 
-			},
+		},
 		json: true
 	}, 
 	function (error, response, body) {
